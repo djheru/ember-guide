@@ -1,0 +1,39 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+
+<!-- head -->
+<% include include/head %>
+
+<body>
+<div class="container">
+
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+        <!-- flash messages -->
+        <% include include/flash %>
+
+        <!-- LOGIN FORM -->
+        <form action="/signup" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <% include include/form/email %>
+
+            <% include include/form/password %>
+
+            <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+        </form>
+
+        <hr>
+
+        <p>Already have an account? <a href="/login">Login</a></p>
+
+        <p>Or go <a href="/">home</a>.</p>
+
+    </div>
+
+</div>
+</body>
+</html>

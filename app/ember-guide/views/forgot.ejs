@@ -1,0 +1,35 @@
+<!-- views/forgot.ejs -->
+<!doctype html>
+<html>
+
+<!-- head -->
+<% include include/head %>
+
+<body>
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <h1><span class="fa fa-user"></span> Forgot Password?</h1>
+
+        <!-- flash messages -->
+        <% include include/flash %>
+
+        <!-- FORGOT FORM -->
+        <form action="/forgot" method="post">
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input name="password" type="hidden">
+
+            <% include include/form/email %>
+
+            <button type="submit" class="btn btn-warning btn-lg">Send Reset Email</button>
+        </form>
+
+        <hr>
+
+        <p><a href="/login">Go back to login</a></p>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!-- views/profile-link.ejs -->
+<!doctype html>
+<html>
+
+<!-- head -->
+<% include include/head %>
+
+<body>
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <h1><span class="fa fa-user"></span> Add Local Account</h1>
+
+        <!-- flash messages -->
+        <% include include/flash %>
+
+        <!-- LOGIN FORM -->
+        <form action="/signup" method="post">
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <% include include/form/email %>
+
+            <% include include/form/password %>
+
+            <button type="submit" class="btn btn-warning btn-lg">Add Local</button>
+        </form>
+
+        <hr>
+
+        <p><a href="/profile">Go back to profile</a></p>
+
+    </div>
+</div>
+</body>
+</html>

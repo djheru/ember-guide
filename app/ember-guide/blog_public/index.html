@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ember Starter Kit</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+
+<script type="text/x-handlebars">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#">Bloggr</a>
+            <ul class="nav">
+                <li>{{#link-to 'posts'}}Posts{{/link-to}}</li>
+                <li>{{#link-to 'about'}}About{{/link-to}}</li>
+            </ul>
+        </div>
+    </div>
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="posts">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <table class="table">
+                    <thead>
+                        <tr><th>Recent Posts</th></tr>
+                    </thead>
+                    <tbody>
+                        {{#each}}
+                            <tr>
+                                <td>
+                                    {{#link-to 'post' this}}
+                                    {{title}} <small class="muted">by {{author.name}}</small>
+                                    {{/link-to}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="span9">
+                {{outlet}}
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-handlebars" id="post">
+    {{#if isEditing}}
+        {{partial 'post/edit'}}
+        <button {{action "doneEditing"}}>done</button>
+    {{else}}
+        <button {{action "edit"}}>edit</button>
+    {{/if}}
+
+    <h1>{{title}}</h1>
+    <h2>by {{author.name}} <small class="muted">{{format-date date}}</small> </h2><hr />
+    <div class="intro">
+        {{excerpt}}
+    </div>
+
+    <div class="below-the-fold">
+        {{body}}
+    </div>
+</script>
+
+<script type="text/x-handlebars" id="post/_edit">
+    <p>{{input type="text" value=title}}</p>
+    <p>{{input type="text" value=excerpt}}</p>
+    <p>{{textarea value=body}}</p>
+</script>
+
+<script type="text/x-handlebars" id="about">
+    <div class="about">
+
+        <p>Lorem ipsum dolor sit amet, has ut omnis adipisci, in mel ullum latine. Sint graece voluptatum mei ea? Eam volumus propriae ex, ea dolor signiferumque duo? Molestiae gubergren ea eum, malis pericula ex pri, eos an nonumy impedit meliore.
+        </p>
+        <p>
+            Eros etiam ex nec, at vero mutat iudicabit his? Eos hendrerit pertinacia an. Quo dicta accumsan legendos te, recusabo instructior in per, case aperiri oportere cum id! Quas harum sit ex? Quo at iudico debitis, vidit quaeque recteque cu ius!
+            Hinc etiam legimus has in, sea viderer meliore eu. Adhuc assentior sed at. Ad quod noster pri, duo dolor recusabo conceptam at. Ex ius eros audiam rationibus, ubique voluptatum reprehendunt est in! Salutandi erroribus id sed. Ea alii regione per. Assum dolorum scribentur sea ei.
+            No sit eirmod maiorum, ex eos eruditi reprimique. Aeque apeirian scripserit no eum, cu est omnis audiam! Repudiare philosophia disputationi eos ut. Mediocrem quaerendum et sit, duo illud graeco ex.
+        </p>
+        <p>
+            Nam offendit maluisset ad! Eum ne veritus euripidis? Malorum principes disputationi ius et, id veri utroque per. Tritani malorum perfecto nec eu, cum adhuc intellegat cu. An eam diceret corpora, solum audire te per, mel case insolens omittantur id. Et gloriatur liberavisse vel, duo semper commodo ex.
+        </p>
+    </div>
+</script>
+
+
+<script src="js/libs/jquery.js"></script>
+<script src="js/libs/handlebars.js"></script>
+<script src="js/libs/ember.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.js"></script>
+<script src="js/app.js"></script>
+<!-- to activate the test runner, add the "?test" query string parameter -->
+<script src="tests/runner.js"></script>
+</body>
+</html>

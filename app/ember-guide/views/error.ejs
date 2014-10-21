@@ -1,0 +1,30 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+
+<!-- head -->
+<% include include/head %>
+
+<body>
+<div class="container">
+
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+        <!-- flash messages -->
+        <% include include/flash %>
+
+        <h1>Application Error</h1>
+        <pre><%= error %></pre>
+        <hr>
+
+        <p>Already have an account? <a href="/login">Login</a></p>
+
+        <p>Or go <a href="/">home</a>.</p>
+
+    </div>
+
+</div>
+</body>
+</html>
