@@ -1,0 +1,20 @@
+{
+    "posts": [
+        {
+            "id":  "1",
+            "title": "Rails is Omakase",
+            "author": {"name": "djehru"},
+            "date": "10-27-2014",
+            "excerpt": "This is the one thing abiut that stuff",
+            "content": "Foo the things, etc. blah blah blah, lorem ipsum"
+        },
+        {
+            "id": "2",
+            "title": "Blah Blah Blah",
+            "author": {"name": "djehru"},
+            "date": "10-20-2014",
+            "excerpt": "ThKeyboard Kat Meowuff",
+            "content": "Foasdfasdfo the things, asdfetc. blah blahasdf blah, lorasdfem ipsumasdf"
+        }
+    ]
+}
