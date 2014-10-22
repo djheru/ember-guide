@@ -15,12 +15,20 @@
         </header>
         <section id="main">
             <ul id="todo-list">
-                {{#each}}
+                {{#each itemController="todo"}}
                     {{! wtf is "isCompleted:completed"}}
-                    <li {{bind-attr class="isCompleted:completed"}}>
-                        <input type="checkbox" class="toggle"/>
-                        <label>{{title}}</label>
-                        <button class="destroy"></button>
+                    <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
+                        {{#if isEditing}}
+                            {{edit-todo
+                                class="edit"
+                                value=title
+                                focus-out="acceptChanges"
+                                insert-newline="acceptChanges"}}
+                        {{else}}
+                            {{input type="checkbox" class="toggle" checked=isCompleted}}
+                            <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
+                            <button class="destroy"></button>
+                        {{/if}}
                     </li>
                 {{/each}}
             </ul>
@@ -28,7 +36,7 @@
         </section>
         <footer id="footer">
                 <span id="todo-count">
-                    <strong>2</strong> todos left
+                    <strong>{{remaining}}</strong> {{inflection}} left
                 </span>
             <ul id="filters">
                 <li>
@@ -58,5 +66,7 @@
 <script src="js/router.js" type="text/javascript"></script>
 <script src="js/models/todo.js" type="text/javascript"></script>
 <script src="js/controllers/todos_controller.js" type="text/javascript"></script>
+<script src="js/controllers/todo_controller.js" type="text/javascript"></script>
+<script src="js/views/edit_todo_view.js" type="text/javascript"></script>
 </body>
 </html>
